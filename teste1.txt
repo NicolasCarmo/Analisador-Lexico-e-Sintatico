@@ -1,0 +1,8 @@
+if (condicao1) {
+   variavel1;
+   if (condicao2) {
+      variavel2;
+   }
+} else {
+   variavel3;
+}

@@ -1,0 +1,21 @@
+parser code {:
+    public void report_error(String message, Object info) {
+        System.err.println("Erro sintático: " + message);
+    }
+:};
+
+terminal IF, ELSE, LBRACE, RBRACE, LPAREN, RPAREN, SEMI;
+terminal String ID, NUMBER;
+
+non terminal program, stmt, expr;
+
+program ::= stmt* ;
+
+stmt ::= IF LPAREN expr RPAREN LBRACE stmt* RBRACE
+       | ID SEMI
+       | error SEMI {: System.err.println("Erro sintático: comando mal formado."); :}
+       ;
+
+expr ::= ID
+       | NUMBER
+       ;
